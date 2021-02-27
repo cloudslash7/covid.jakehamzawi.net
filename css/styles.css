@@ -67,3 +67,14 @@ h3 {
     background-color: #1f1f1f;
     color: #e4e4e4;
 }
+#covidData {
+    display: block;
+    margin: 3em;
+}
+.dataPoint {
+    text-align: center;
+    margin: 1em;
+}
+.header {
+    text-align: center;
+}

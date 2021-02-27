@@ -28,7 +28,7 @@
     </div>
   </nav>
 
-  <h1>COVID Info</h1>
+  <h1>COVID Search</h1>
   <div class="container">
     <form name="search">
         <input id="searchBox" type="text" placeholder="Enter a country">
@@ -36,8 +36,14 @@
     </form>
   </div>
   <div class="container">
-    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getCountryNames();"/> 
-    <input class="answerBtns" id="worldButton" type="button" value="World" onclick="changeClass(this.id);"/>
+    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getData();"/> 
+    <input class="answerBtns" id="worldButton" type="button" value="World" onclick="getWorldData();"/>
+  </div>
+
+  <div class="container">
+    <div id="covidData">
+
+    </div>
   </div>
 
   <a href="/countries/">List of supported countries</a>

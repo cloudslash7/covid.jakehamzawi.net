@@ -1,4 +1,11 @@
 document.forms["search"].elements["searchBox"].focus();
+document.getElementById("submit").addEventListener("click", event => {
+    getCovidData();
+    event.preventDefault();
+});
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 async function getCountryData() {
     const url = "https://api.covid19api.com/countries";
     return fetch(url)
@@ -22,22 +29,83 @@ async function getCountryNames() {
             delay: 500
         })
         return countryNames;
-    })
-    .catch(error => console.log(error))
+    }).catch(error => console.log(error))
 }
 
+function getCovidData() {
+    getCountryData().then(json => {
+        console.log(json);
+        let countryNames = new Array();
+        for (let i = 0; i < json.length; i++) {
+            countryNames.push(json[i].Country);
+        }
+        console.log(countryNames);
+        const value = document.getElementById("searchBox").value;
+        if (value === "") return;
+        let targetIndex = countryNames.findIndex(name => name === value);
+        console.log(targetIndex);
+        let targetSlug = json[targetIndex].Slug;
+        console.log(targetSlug);
+        const url = "https://api.covid19api.com/total/country/" + targetSlug;
+        fetch(url)
+            .then(response => {
+                return response.json();
+            }).then(json => {
+                document.getElementById("covidData").innerHTML = "";
+                let header = document.createElement("h2");
+                header.classList.add("header");
+                header.appendChild(document.createTextNode(json[0].Country));
+                document.getElementById("covidData").appendChild(header);
+                let totalCases = numberWithCommas(json[json.length - 1].Confirmed);
+                let totalDeaths = numberWithCommas(json[json.length - 1].Deaths);
+                let totalRecovered = numberWithCommas(json[json.length - 1].Recovered);
+                let totalActive = numberWithCommas(json[json.length - 1].Recovered);
+                let casesInWeek = numberWithCommas((json[json.length - 1].Confirmed - json[json.length - 8].Confirmed));
+                let deathsInWeek = numberWithCommas((json[json.length - 1].Deaths - json[json.length - 8].Deaths));
+                let textArray = new Array();
+                textArray.push(document.createTextNode("Total cases: " + totalCases));
+                textArray.push(document.createTextNode("Total deaths: " + totalDeaths));
+                textArray.push(document.createTextNode("Total recovered: " + totalRecovered));
+                textArray.push(document.createTextNode("Total active cases: " + totalActive));
+                textArray.push(document.createTextNode("Cases this week: " + casesInWeek));
+                textArray.push(document.createTextNode("Deaths this week: " + deathsInWeek));
+                
+                for (let i = 0; i < textArray.length; i++) {
+                    let dataPoint = document.createElement("h4");
+                    dataPoint.classList.add("dataPoint");
+                    dataPoint.appendChild(textArray[i]);
+                    document.getElementById("covidData").appendChild(dataPoint);
+                }      
+            }).catch(error => console.log(error));
 
-function getData() {
-    getCountryNames().then(response => {
-        document.getElementById("submit").addEventListener("click", event => {
-            console.log("test")
-            event.preventDefault();
-            const value = document.getElementById("searchBox").value;
-            if (value === "") return;
-            console.log(response);
-            console.log(countries.find(item => item.Country === "Ukraine"));
-            const url = "https://https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z";
-        })
-    })
-    .catch(error => console.log(error))
+        
+    }).catch(error => console.log(error))
+}
+
+function getWorldData() {
+    let url = "https://api.covid19api.com/summary";
+    fetch(url)
+        .then(response => {
+            return response.json();
+        }).then(json => {
+            document.getElementById("covidData").innerHTML = "";
+            let header = document.createElement("h2");
+            header.appendChild(document.createTextNode("World"));
+            document.getElementById("covidData").appendChild(header);
+            let globalData = json.Global;
+            console.log(globalData);
+            let totalCases = numberWithCommas(globalData.TotalConfirmed);
+            let totalDeaths = numberWithCommas(globalData.TotalDeaths);
+            let totalRecovered = numberWithCommas(globalData.TotalRecovered);
+            let textArray = new Array();
+            textArray.push(document.createTextNode("Total cases: " + totalCases));
+            textArray.push(document.createTextNode("Total deaths: " + totalDeaths));
+            textArray.push(document.createTextNode("Total recovered: " + totalRecovered));
+            for (let i = 0; i < textArray.length; i++) {
+                let dataPoint = document.createElement("h4");
+                dataPoint.classList.add("dataPoint");
+                dataPoint.appendChild(textArray[i]);
+                document.getElementById("covidData").appendChild(dataPoint);
+            }
+        }).catch(error => console.log(error));
 }
