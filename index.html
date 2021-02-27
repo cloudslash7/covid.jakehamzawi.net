@@ -6,12 +6,13 @@
   <title>COVID Info</title>
   <meta name="author" content="Jake Hamzawi">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/jquery-ui-1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body>
+<body onload="getCountries()">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="/images/virus.png" width=50px/></a>
+    <a class="navbar-brand" href="/"><img src="/images/virus.png" width=50px/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,20 +30,24 @@
 
   <h1>COVID Info</h1>
   <div class="container">
-    <form name="search">
-      <input id="searchBox" type="text" placeholder="Enter a country"></input>
-      <input id="submit" type="image" src="/images/search.png" alt="Submit"></input>
+    <form autocomplete="off" name="search">
+      <div class="autocomplete">
+        <input id="searchBox" type="text" placeholder="Enter a country">
+        <input id="submit" type="image" src="/images/search.png" alt="Submit">
+      </div>
     </form>
   </div>
   <div class="container">
-    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="changeClass(this.id);"/> 
+    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getCountries();"/> 
     <input class="answerBtns" id="worldButton" type="button" value="World" onclick="changeClass(this.id);"/>
   </div>
 
   <a href="/countries/">List of supported countries</a>
-  <script src="/scripts/script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src="/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+  <script src="/jquery-ui-1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="/scripts/script.js"></script>
 </body>
 </html>
