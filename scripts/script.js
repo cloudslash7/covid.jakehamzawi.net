@@ -34,7 +34,6 @@ async function getCountryNames() {
 
 function getCovidData() {
     getCountryData().then(json => {
-        console.log(json);
         let countryNames = new Array();
         for (let i = 0; i < json.length; i++) {
             countryNames.push(json[i].Country);
@@ -78,7 +77,6 @@ function getCovidData() {
                 }      
             }).catch(error => console.log(error));
 
-        
     }).catch(error => console.log(error))
 }
 
@@ -90,10 +88,10 @@ function getWorldData() {
         }).then(json => {
             document.getElementById("covidData").innerHTML = "";
             let header = document.createElement("h2");
+            header.classList.add("header");
             header.appendChild(document.createTextNode("World"));
             document.getElementById("covidData").appendChild(header);
             let globalData = json.Global;
-            console.log(globalData);
             let totalCases = numberWithCommas(globalData.TotalConfirmed);
             let totalDeaths = numberWithCommas(globalData.TotalDeaths);
             let totalRecovered = numberWithCommas(globalData.TotalRecovered);

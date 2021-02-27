@@ -33,11 +33,11 @@
     <form name="search">
         <input id="searchBox" type="text" placeholder="Enter a country">
         <input id="submit" type="image" src="/images/search.png" alt="Submit">
+        <input id="worldButton" type="image" src="/images/globe.png" alt="World" onclick="getWorldData();return false;"/>
     </form>
   </div>
   <div class="container">
-    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getData();"/> 
-    <input class="answerBtns" id="worldButton" type="button" value="World" onclick="getWorldData();"/>
+    <a href="/countries/">List of supported countries</a>
   </div>
 
   <div class="container">
@@ -45,8 +45,6 @@
 
     </div>
   </div>
-
-  <a href="/countries/">List of supported countries</a>
 
   <script src="/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
   <script src="/jquery-ui-1.12.1/jquery-ui.js"></script>
