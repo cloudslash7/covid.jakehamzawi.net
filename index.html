@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body onload="getCountries()">
+<body onload="getCountryNames()">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/"><img src="/images/virus.png" width=50px/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,15 +30,13 @@
 
   <h1>COVID Info</h1>
   <div class="container">
-    <form autocomplete="off" name="search">
-      <div class="autocomplete">
+    <form name="search">
         <input id="searchBox" type="text" placeholder="Enter a country">
         <input id="submit" type="image" src="/images/search.png" alt="Submit">
-      </div>
     </form>
   </div>
   <div class="container">
-    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getCountries();"/> 
+    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="getCountryNames();"/> 
     <input class="answerBtns" id="worldButton" type="button" value="World" onclick="changeClass(this.id);"/>
   </div>
 
