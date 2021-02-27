@@ -31,6 +31,7 @@ input[type=image] {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border: 1px solid red;
 }
 h1 {
     text-align: center;
@@ -42,9 +43,14 @@ a {
 .al-container {
     display: flex;
 }
+#countries {
+    display: block;
+    margin-left: 1em;
+}
 h3 {
     margin: 0 4px;
 }
 .country {
     display: block;
+    margin-left: 2em;
 }

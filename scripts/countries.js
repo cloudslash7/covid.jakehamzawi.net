@@ -9,24 +9,42 @@ function getCountries() {
                 countries.push(json[i].Country);
             }
             countries = countries.sort((a, b) => a.localeCompare(b));
-            console.log(countries);
             for (let i = 0; i < countries.length; i++) {
                 let add = "";
                 let currentCountry = countries[i];
                 if (i == 0) {
-                    add += "<div class='container' id='" + currentCountry.charAt(0) + "'><h2>" + currentCountry.charAt(0) + "</h2>";
+                    let div;
+                    div = document.createElement("div");
+                    div.classList.add("letter");
+                    div.setAttribute("id", currentCountry.charAt(0))
+                    document.getElementById("countries").appendChild(div);
+                    let header = document.createElement("h2");
+                    let countryName = document.createTextNode(currentCountry.charAt(0));
+                    header.appendChild(countryName);
+                    div.appendChild(header);
+                    document.getElementById("countries").appendChild(div);
                 }
                 else {
                     let previousCountry = countries[i - 1];
                     if (previousCountry.charAt(0) != currentCountry.charAt(0)) {
-                        add += "<div class='container' id='" + currentCountry.charAt(0) + "'><h2>" + currentCountry.charAt(0) + "</h2>";
+                        let div;
+                        div = document.createElement("div");
+                        div.classList.add("letter");
+                        div.setAttribute("id", currentCountry.charAt(0))
+                        document.getElementById("countries").appendChild(div);
+                        let header = document.createElement("h2");
+                        let countryName = document.createTextNode(currentCountry.charAt(0));
+                        header.appendChild(countryName);
+                        div.appendChild(header);
+                        document.getElementById("countries").appendChild(div);
                     }
                 }
-                add += "<p class='country'>" + currentCountry + "</p>";
-                if (add.charAt(0) == '<') {
-                    add += "</div>";
-                }
-                document.getElementById("countries").innerHTML += add;
+                let para = document.createElement("p");
+                let countryName = document.createTextNode(currentCountry);
+                para.appendChild(countryName);
+                para.classList.add("country");
+                console.log(countryName);
+                document.getElementById(currentCountry.charAt(0)).appendChild(para);
             }
         }).catch(error => {
             console.log(error);
