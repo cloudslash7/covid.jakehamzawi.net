@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>COVID Info</title>
+  <title>Supported Countries</title>
   <meta name="author" content="Jake Hamzawi">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/styles.css">
@@ -17,29 +17,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/countries/">Countries</a>
         </li>
       </ul>
     </div>
   </nav>
-
-  <h1>COVID Info</h1>
+  <h1>Supported Countries</h1>
+  
   <div class="container">
-    <form name="search">
-      <input id="searchBox" type="text" placeholder="Enter a country"></input>
-      <input id="submit" type="image" src="/images/search.png" alt="Submit"></input>
-    </form>
+    
   </div>
-  <div class="container">
-    <input class="answerBtns" id="countryButton" type="button" value="Country" onclick="changeClass(this.id);"/> 
-    <input class="answerBtns" id="worldButton" type="button" value="World" onclick="changeClass(this.id);"/>
-  </div>
-
-  <a href="/countries/">List of supported countries</a>
   <script src="/scripts/script.js"></script>
 </body>
 </html>
