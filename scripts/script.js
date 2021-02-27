@@ -38,13 +38,10 @@ function getCovidData() {
         for (let i = 0; i < json.length; i++) {
             countryNames.push(json[i].Country);
         }
-        console.log(countryNames);
         const value = document.getElementById("searchBox").value;
         if (value === "") return;
         let targetIndex = countryNames.findIndex(name => name === value);
-        console.log(targetIndex);
         let targetSlug = json[targetIndex].Slug;
-        console.log(targetSlug);
         const url = "https://api.covid19api.com/total/country/" + targetSlug;
         fetch(url)
             .then(response => {

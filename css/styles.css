@@ -15,15 +15,6 @@ input[type=text] {
     box-shadow: none;
     color: #e4e4e4;
 }
-input[type=text]:focus {
-    background-color: #122035;
-    box-shadow: 0 0 0pt 1pt #e4e4e4;
-    outline: none;
-}
-input[type=image] {
-    width: 20px;
-    margin-left: 5px;
-}
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -31,46 +22,13 @@ input[type=image] {
     justify-content: center;
     margin-bottom: 2em;
 }
-h1 {
-    margin: 2em 0;
-    text-align: center;
-}
-a {
-    text-decoration: none;
-    color: #4268a1;
-}
 .al-container {
     display: flex;
     margin-bottom: 3em;
 }
-#countries {
-    display: block;
-    columns: 2;
-    /*margin-left: 1em;*/
-    text-align: center;
-}
-h3 {
-    margin: 0 4px;
-}
-.country {
-    display: block;
-    /*margin-left: 2em;*/
-    text-align: center;
-}
-.letter {
-    break-inside: avoid;
-}
-.autocomplete {
-    position: relative;
-    display: inline-block;
-}
 .ui-autocomplete {
     background-color: #1f1f1f;
     color: #e4e4e4;
-}
-#covidData {
-    display: block;
-    margin: 1em;
 }
 .dataPoint {
     text-align: center;
@@ -79,6 +37,78 @@ h3 {
 .header {
     text-align: center;
 }
+#covidData {
+    display: block;
+    margin: 1em;
+}
 #worldButton {
     outline: transparent;
+}
+#countries {
+    display: block;
+    columns: 2;
+    text-align: center;
+}
+@media (max-width: 48em) {
+    input[type=text] {
+        width: 300px;
+    }
+    input[type=text]:focus {
+        background-color: #122035;
+        box-shadow: 0 0 0pt 1pt #e4e4e4;
+        outline: none;
+    }
+    input[type=image] {
+        width: 20px;
+        margin-left: 5px;
+    }
+    h1 {
+        margin: 2em 0;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.3em;
+        margin: 0 4px;
+    }
+    a {
+        text-decoration: none;
+        color: #4268a1;
+    }
+    #countries {
+        columns: 1;
+    }
+    .country {
+        display: block;
+        text-align: center;
+    }
+    
+}
+@media (min-width: 48em) {
+    input[type=text]:focus {
+        background-color: #122035;
+        box-shadow: 0 0 0pt 1pt #e4e4e4;
+        outline: none;
+    }
+    input[type=image] {
+        width: 20px;
+        margin-left: 5px;
+    }
+    h1 {
+        margin: 2em 0;
+        text-align: center;
+    }
+    h3 {
+        margin: 0 4px;
+    }
+    a {
+        text-decoration: none;
+        color: #4268a1;
+    }
+    .letter {
+        break-inside: avoid;
+    }
+    .country {
+        display: block;
+        text-align: center;
+    }
 }
