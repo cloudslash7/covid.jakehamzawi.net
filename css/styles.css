@@ -37,6 +37,12 @@ input[type=text] {
 .header {
     text-align: center;
 }
+.github {
+    color: #a5a5a5;
+}
+.spacer {
+    margin-top: 10em;
+}
 #covidData {
     display: block;
     margin: 1em;
