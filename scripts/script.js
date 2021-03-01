@@ -50,12 +50,13 @@ function getCovidData() {
                 document.getElementById("covidData").innerHTML = "";
                 let header = document.createElement("h2");
                 header.classList.add("header");
+                console.log(json);
                 header.appendChild(document.createTextNode(json[0].Country));
                 document.getElementById("covidData").appendChild(header);
                 let totalCases = numberWithCommas(json[json.length - 1].Confirmed);
                 let totalDeaths = numberWithCommas(json[json.length - 1].Deaths);
                 let totalRecovered = numberWithCommas(json[json.length - 1].Recovered);
-                let totalActive = numberWithCommas(json[json.length - 1].Recovered);
+                let totalActive = numberWithCommas(json[json.length - 1].Active);
                 let casesInWeek = numberWithCommas((json[json.length - 1].Confirmed - json[json.length - 8].Confirmed));
                 let deathsInWeek = numberWithCommas((json[json.length - 1].Deaths - json[json.length - 8].Deaths));
                 let textArray = new Array();
