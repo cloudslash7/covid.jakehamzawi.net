@@ -1,5 +1,5 @@
 function getCountries() {
-    const url = "http://localhost:3000/proxy/countries";
+    const url = "https://localhost:3000/proxy/countries";
     fetch(url)
         .then(response => {
             return response.json();
