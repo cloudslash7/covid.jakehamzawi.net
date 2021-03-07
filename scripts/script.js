@@ -7,7 +7,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 async function getCountryData() {
-    const url = "http://localhost:3000/proxy/countries";
+    const url = "https://covid.jakehamzawi.net:3000/proxy/countries";
     return fetch(url)
         .then(response => {
             return response.json();
@@ -42,7 +42,7 @@ function getCovidData() {
         if (value === "") return;
         let targetIndex = countryNames.findIndex(name => name === value);
         let targetSlug = json[targetIndex].Slug;
-        const url = "http://localhost:3000/proxy/total/country/" + targetSlug;
+        const url = "https://covid.jakehamzawi.net:3000/proxy/total/country/" + targetSlug;
         fetch(url)
             .then(response => {
                 return response.json();
@@ -79,7 +79,7 @@ function getCovidData() {
 }
 
 function getWorldData() {
-    let url = "http://localhost:3000/proxy/summary";
+    let url = "https://covid.jakehamzawi.net:3000/proxy/summary";
     fetch(url)
         .then(response => {
             return response.json();
